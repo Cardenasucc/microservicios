@@ -1,0 +1,27 @@
+{
+  "name": "typeofplan",
+  "version": "1.0.0",
+  "description": "the user have the choise of a plan for the gym",
+  "main": "app.js",
+  "scripts": {
+    "install-all": "npm install @prisma/client cors crypto-js cryptojs dotenv express jsonwebtoken prisma sqlite",
+    "install-dev": "npm install nodemon -D",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cardenasucc/gym-project.git"
+  },
+  "author": "deivid & santiago",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cardenasucc/gym-project/issues"
+  },
+  "homepage": "https://github.com/Cardenasucc/gym-project#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
