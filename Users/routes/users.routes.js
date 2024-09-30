@@ -2,28 +2,28 @@
  * @author deivid & santiago
  * @version 1.0.0
  * 
- * User routes
- * This file defines user routes
+ * Users routes
+ * This file defines users routes
  */
 
 const {Router} = require('express');
 
-const router = Router(); 
+const router= Router();
 
 /**
  * Importing methods or controllers
  */
 
-const {ShowUsers, ShowUser, AddUsers, DeleteUsers, EditUsers} = require ('../controllers/users.controllers');
+const {AddUsers, ShowUsers, DeleteUsers, EditUsers, ShowUser, Login} = require('../controllers/users.controller');
 
 /**
- * routes
+ * Routes
  */
-
 router.get('/', ShowUsers);
-router.get('/:id', ShowUser);
 router.post('/', AddUsers);
-router.delete('/', DeleteUsers);
-router.put('/', EditUsers);
+router.delete('/:id', DeleteUsers);
+router.put('/:id', EditUsers);
+router.get('/:id', ShowUser);
+router.post('/Login', Login);
 
 module.exports = router;
