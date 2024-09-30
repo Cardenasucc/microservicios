@@ -11,10 +11,18 @@
   "author": "deivid & santiago",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.19.2",
-    "gym-project": "file:"
+    "@prisma/client": "^5.20.0",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.2.0",
+    "cryptojs": "^2.5.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "gym-project": "file:",
+    "jsonwebtoken": "^9.0.2",
+    "sqlite": "^5.1.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.4"
+    "nodemon": "^3.1.4",
+    "prisma": "^5.20.0"
   }
 }
