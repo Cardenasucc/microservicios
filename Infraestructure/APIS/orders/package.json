@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/Cardenasucc/gym-project#readme",
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "typeofplan": "file:"
   },
   "devDependencies": {
     "nodemon": "^3.1.4"

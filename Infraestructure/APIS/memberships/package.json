@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Cardenasucc/gym-project#readme",
   "dependencies": {
+    "billing": "file:",
     "express": "^4.19.2"
   },
   "devDependencies": {
