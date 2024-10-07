@@ -1,10 +1,30 @@
 version: '3.8'
 services:
+webserver:
+  build: ./nginx
+  ports:
+   - "80:80"
+  depends_on:
+    - users_api
+  networks:
+    -dev_network
   users_api:
     build:
       context: ./APIS
+    deploy:
+      resources:
+      limits:
+        replicas: 10
+        resources:
+          limits:
+            cpus: '0.50'
+            memory: 512M
+          reservations:
+            cpus: '0.25'
+            memory: 256M
+
     ports:
-      - "3001:3000"
+      - "3000-3010:3000"
     volumes:
       - ./APIS/users:/usr/userAPI
 
@@ -12,14 +32,55 @@ services:
     build:
       context: ./APIS
     ports:
-      - "3002:3000"
+      - "3000-3010:3000"
     volumes:
-      - ./APIS/orders:/usr/ordersAPI
+      - ./APIS/orders:/ord/ordersAPI
 
   memberships_api:
     build:
       context: ./APIS
     ports:
-      - "3003:3000"
+      - "3000-3010:3000"
     volumes:
-      - ./APIS/memberships:/usr/membershipsAPI
+      - ./APIS/memberships:/mem/membershipsAPI
+    networks:
+      - dev_network
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: dev_pgadmin
+    ports:
+      -8888:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: deivid@cardenas.com
+      PGADMIN_DEFAULT_PASSWORD: 123456
+    networks:
+      - dev_network
+  
+
+  db_dev:
+    image: postgres:latest
+    deploy:
+      resources:
+      limits:
+        replicas: 10
+        resources:
+          limits:
+            cpus: '0.2'
+            memory: 4GB
+          reservations:
+            cpus: '0.1'
+            memory: 1GB
+    container_name: users_db_dev
+    ports:
+      -"5432:5432"
+    environment:
+      - POSTGRES_PASSWORD: 12345
+    volumes:
+      -./users_data_dev:/var/lib/postgresql/data
+    networks:
+      - dev_network
+networks:
+  dev_network:
+  driver: bridge
+
+

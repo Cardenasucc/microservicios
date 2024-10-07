@@ -18,18 +18,18 @@ RUN npm install prisma -g \
 
 # Create directories for each folder
 RUN mkdir -p /usr/userAPI
-RUN mkdir -p /usr/ordersAPI
-RUN mkdir -p /usr/membershipsAPI
+RUN mkdir -p /ord/ordersAPI
+RUN mkdir -p /mem/membershipsAPI
 
 # Set working directory for each folder
 WORKDIR /usr/userAPI
-WORKDIR /usr/ordersAPI
-WORKDIR /usr/membershipsAPI
+WORKDIR /ord/ordersAPI
+WORKDIR /mem/membershipsAPI
 
 # Copy package.json files for each folder
 COPY users/package*.json /usr/userAPI/
-COPY orders/package*.json /usr/ordersAPI/
-COPY memberships/package*.json /usr/membershipsAPI/
+COPY orders/package*.json /ord/ordersAPI/
+COPY memberships/package*.json /mem/membershipsAPI/
 
 # Install dependencies for each folder
 RUN npm install
@@ -37,8 +37,8 @@ RUN npm install dotenv --save--dev
 
 # Copy files for each folder
 COPY users /usr/userAPI/
-COPY orders /usr/ordersAPI/
-COPY memberships /usr/membershipsAPI/
+COPY orders /ord/ordersAPI/
+COPY memberships /mem/membershipsAPI/
 
 # Generate Prisma schema for each folder
 RUN prisma generate
